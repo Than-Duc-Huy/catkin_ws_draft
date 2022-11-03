@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="connector">
+        <joint name="adapter" type="fixed">
+            <parent link="flange"/>
+            <child link="robotiq_arg2f_base_link"/>
+            <origin xyz="0.015 0 0" rpy="0 ${pi/2} 0"/>
+        </joint>
+    </xacro:macro>
+    <xacro:connector/>
+</robot>

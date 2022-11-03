@@ -1,0 +1,5 @@
+<launch>
+    <arg name="port" value="/dev/ttyUSB0"/>
+    <!-- Start the ModRTU communication -->
+    <node name="robotiq_2f_gripper_rtu_node" pkg="robotiq_2f_gripper_control" type="Robotiq2FGripperRtuNode.py" args="$(arg port)" output="screen"/>
+</launch>

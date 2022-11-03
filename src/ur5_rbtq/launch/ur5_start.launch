@@ -1,0 +1,8 @@
+<launch>
+    <!-- Start the driver -->
+    <include file="$(find ur_robot_driver)/launch/ur5_bringup.launch">
+        <arg name="robot_ip" value="192.168.1.100"/>
+        <arg name="kinematics_config" value="/home/huy/catkin_ws/ur5_i2r.yaml"/>
+    </include>
+
+</launch>

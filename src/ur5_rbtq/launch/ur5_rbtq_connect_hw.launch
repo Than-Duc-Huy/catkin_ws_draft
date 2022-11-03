@@ -1,0 +1,51 @@
+<launch>
+  <include file="$(find ur5_rbtq)/launch/ur5_start.launch"/>
+  <include file="$(find ur5_rbtq)/launch/rbtq_start.launch"/>
+
+  <arg name="sim" default="false" />
+  <arg name="debug" default="false" />
+
+  <!-- Remap follow_joint_trajectory -->
+  <remap if="$(arg sim)" from="/scaled_pos_joint_traj_controller/follow_joint_trajectory" to="/pos_joint_traj_controller/follow_joint_trajectory"/>
+
+  <!-- Launch moveit -->
+  <include file="$(find ur5_rbtq_moveit_config)/launch/move_group.launch">
+    <arg name="debug" default="$(arg debug)" />
+  </include>
+
+  <!-- For the gripper -->
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/> -->
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ur5_rbtq)/launch/ur5_rbtq_connect_hw.rviz"></node>
+
+
+  <!-- CAMERA -->
+  <arg name="camera"                default="camera"/>
+
+  <group ns="$(arg camera)">
+    <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+      <arg name="serial_no"         value=""/>
+      <arg name="json_file_path"    value=""/>
+      <arg name="depth_width"       value="640"/>
+      <arg name="depth_height"      value="480"/>
+      <arg name="depth_fps"         value="30"/>
+      <arg name="color_width"       value="640"/>
+      <arg name="color_height"      value="480"/>
+      <arg name="color_fps"         value="30"/>
+      <arg name="enable_depth"      value="true"/>
+      <arg name="enable_color"      value="true"/>
+      <arg name="enable_infra1"     value="false"/>
+      <arg name="enable_infra2"     value="false"/>
+      <arg name="enable_fisheye"    value="false"/>
+      <arg name="enable_gyro"       value="false"/>
+      <arg name="enable_accel"      value="false"/>
+      <arg name="enable_pointcloud" value="true"/>
+      <arg name="enable_sync"       value="true"/>
+      <arg name="tf_prefix"         value="$(arg camera)"/>
+    </include>
+  </group>
+
+
+
+
+</launch>
