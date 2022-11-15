@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
+.PHONY : ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
+
+# Convenience name for target.
+CppWebCamPubSub: ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
+
+.PHONY : CppWebCamPubSub
+
+# fast build rule for target.
+CppWebCamPubSub/fast:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build.make ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build
+.PHONY : CppWebCamPubSub/fast
+
+# Convenience name for target.
 ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule
 .PHONY : ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule
@@ -182,6 +197,33 @@ _catkin_empty_exported_target/fast:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/build.make ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/build
 .PHONY : _catkin_empty_exported_target/fast
 
+src/CppWebCamPubSub.o: src/CppWebCamPubSub.cpp.o
+
+.PHONY : src/CppWebCamPubSub.o
+
+# target to build an object file
+src/CppWebCamPubSub.cpp.o:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build.make ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/src/CppWebCamPubSub.cpp.o
+.PHONY : src/CppWebCamPubSub.cpp.o
+
+src/CppWebCamPubSub.i: src/CppWebCamPubSub.cpp.i
+
+.PHONY : src/CppWebCamPubSub.i
+
+# target to preprocess a source file
+src/CppWebCamPubSub.cpp.i:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build.make ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/src/CppWebCamPubSub.cpp.i
+.PHONY : src/CppWebCamPubSub.cpp.i
+
+src/CppWebCamPubSub.s: src/CppWebCamPubSub.cpp.s
+
+.PHONY : src/CppWebCamPubSub.s
+
+# target to generate assembly for a file
+src/CppWebCamPubSub.cpp.s:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build.make ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/src/CppWebCamPubSub.cpp.s
+.PHONY : src/CppWebCamPubSub.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -195,7 +237,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... CppWebCamPubSub"
 	@echo "... _catkin_empty_exported_target"
+	@echo "... src/CppWebCamPubSub.o"
+	@echo "... src/CppWebCamPubSub.i"
+	@echo "... src/CppWebCamPubSub.s"
 .PHONY : help
 
 
