@@ -18,7 +18,7 @@ class RbtqControl():
     '''
     def __init__(self):
         self.pub = rospy.Publisher('Robotiq2FGripperRobotOutput', outputMsg.Robotiq2FGripper_robot_output,queue_size=10)
-        self.command = outputMsg.Robotiq2FGripper_robot_output();
+        self.command = outputMsg.Robotiq2FGripper_robot_output()
         rospy.Subscriber("Robotiq2FGripperRobotInput", inputMsg.Robotiq2FGripper_robot_input, self.listen_callback)
         self.gACT = 1 #Activate
         self.gGTO = 0 #Go To
