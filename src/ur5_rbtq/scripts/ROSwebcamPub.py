@@ -11,7 +11,7 @@ from cv_bridge import CvBridge, CvBridgeError
 print(sys.executable)
 print(cv.__file__)
 
-image_topic = "/webcam/image_raw"
+image_topic = "/webcam/image_rect"
 
 def callback(msg):
     try:
@@ -24,7 +24,10 @@ def callback(msg):
 
 
 def main():
+
     webcam = cv.VideoCapture(0,cv.CAP_V4L2)
+
+
     rospy.init_node("image_pub")
     pub = rospy.Publisher(image_topic,Image, queue_size=10)
     while(1):

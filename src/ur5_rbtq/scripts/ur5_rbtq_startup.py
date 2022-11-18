@@ -6,13 +6,13 @@ import time
 def main():
     rospy.init_node("ur5_rbtq_control")
     ur5 = UR5Control()
-    rbtq = RbtqControl()
-    rbtq.activate()
+    # rbtq = RbtqControl()
+    # rbtq.activate()
     ur5.goUp()
     ur5.goHome()
-    rbtq.fullClose()
+    # rbtq.fullClose()
     time.sleep(1.5)
-    rbtq.fullOpen()
+    # rbtq.fullOpen()
 
 
 if __name__ =="__main__":

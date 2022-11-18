@@ -3,7 +3,8 @@ import moveit_commander
 import rospy
 import sys
 import moveit_msgs.msg
-import geometry_msgs.msg
+from geometry_msgs.msg import Pose
+import tf2_geometry_msgs
 from std_msgs.msg import String
 
 from moveit_commander.conversions import pose_to_list
@@ -25,18 +26,19 @@ class UR5Control:
 
     def getCurrentState(self):
         self.state = self.robot.get_current_state()
-    def goToPose(self, list):
-        pose_goal = geometry_msgs.msg.Pose()
-        pose_goal.position.x = list[0]
-        pose_goal.position.y = list[1]
-        pose_goal.position.z = list[2]
+    def goToPose(self, pose):
+        # pose_goal = Pose()
+        # pose_goal = pose
+        # pose_goal.position.x = list[0]
+        # pose_goal.position.y = list[1]
+        # pose_goal.position.z = list[2]
 
-        pose_goal.orientation.x = list[3]
-        pose_goal.orientation.y = list[4]
-        pose_goal.orientation.z = list[5]
-        pose_goal.orientation.w = list[6]
+        # pose_goal.orientation.x = list[3]
+        # pose_goal.orientation.y = list[4]
+        # pose_goal.orientation.z = list[5]
+        # pose_goal.orientation.w = list[6]
 
-        self.move_group.set_pose_target(pose_goal)
+        self.move_group.set_pose_target(pose)
         self.move_group.go(wait=True)
         self.move_group.stop()
         self.move_group.clear_pose_targets()
@@ -55,6 +57,11 @@ class UR5Control:
     def goUp(self):
         up = [-0.79, -1.57, 0, -1.57, 0, 0]
         self.goToJoint(up)
+
+
+    def getCurrentPose(self):
+        """Return PoseStamped"""
+        return self.move_group.get_current_pose()
 
 
 def main():

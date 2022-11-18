@@ -1,11 +1,11 @@
 moveit_setup_assistant_config:
   URDF:
-    package: ur5_rbtq
-    relative_path: urdf/ur5_rbtq.xacro
+    package: ur_description
+    relative_path: urdf/ur5.xacro
     xacro_args: ""
   SRDF:
     relative_path: config/ur5.srdf
   CONFIG:
     author_name: huy
     author_email: thanduchuytdn@gmail.com
-    generated_timestamp: 1667371803
+    generated_timestamp: 1668592932

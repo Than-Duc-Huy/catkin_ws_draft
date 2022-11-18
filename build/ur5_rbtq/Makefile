@@ -68,18 +68,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -135,6 +123,18 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/huy/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/huy/catkin_ws/build/CMakeFiles /home/huy/catkin_ws/build/ur5_rbtq/CMakeFiles/progress.marks
@@ -168,6 +168,51 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+ur5_rbtq/CMakeFiles/PBVS.dir/rule:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/PBVS.dir/rule
+.PHONY : ur5_rbtq/CMakeFiles/PBVS.dir/rule
+
+# Convenience name for target.
+PBVS: ur5_rbtq/CMakeFiles/PBVS.dir/rule
+
+.PHONY : PBVS
+
+# fast build rule for target.
+PBVS/fast:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PBVS.dir/build.make ur5_rbtq/CMakeFiles/PBVS.dir/build
+.PHONY : PBVS/fast
+
+# Convenience name for target.
+ur5_rbtq/CMakeFiles/vispComponent.dir/rule:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/vispComponent.dir/rule
+.PHONY : ur5_rbtq/CMakeFiles/vispComponent.dir/rule
+
+# Convenience name for target.
+vispComponent: ur5_rbtq/CMakeFiles/vispComponent.dir/rule
+
+.PHONY : vispComponent
+
+# fast build rule for target.
+vispComponent/fast:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/vispComponent.dir/build.make ur5_rbtq/CMakeFiles/vispComponent.dir/build
+.PHONY : vispComponent/fast
+
+# Convenience name for target.
+ur5_rbtq/CMakeFiles/ibvs.dir/rule:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/ibvs.dir/rule
+.PHONY : ur5_rbtq/CMakeFiles/ibvs.dir/rule
+
+# Convenience name for target.
+ibvs: ur5_rbtq/CMakeFiles/ibvs.dir/rule
+
+.PHONY : ibvs
+
+# fast build rule for target.
+ibvs/fast:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/ibvs.dir/build.make ur5_rbtq/CMakeFiles/ibvs.dir/build
+.PHONY : ibvs/fast
+
+# Convenience name for target.
 ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
 .PHONY : ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
@@ -181,21 +226,6 @@ CppWebCamPubSub: ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
 CppWebCamPubSub/fast:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build.make ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build
 .PHONY : CppWebCamPubSub/fast
-
-# Convenience name for target.
-ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/build.make ur5_rbtq/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
 
 src/CppWebCamPubSub.o: src/CppWebCamPubSub.cpp.o
 
@@ -224,6 +254,87 @@ src/CppWebCamPubSub.cpp.s:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/build.make ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/src/CppWebCamPubSub.cpp.s
 .PHONY : src/CppWebCamPubSub.cpp.s
 
+src/PBVS.o: src/PBVS.cpp.o
+
+.PHONY : src/PBVS.o
+
+# target to build an object file
+src/PBVS.cpp.o:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PBVS.dir/build.make ur5_rbtq/CMakeFiles/PBVS.dir/src/PBVS.cpp.o
+.PHONY : src/PBVS.cpp.o
+
+src/PBVS.i: src/PBVS.cpp.i
+
+.PHONY : src/PBVS.i
+
+# target to preprocess a source file
+src/PBVS.cpp.i:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PBVS.dir/build.make ur5_rbtq/CMakeFiles/PBVS.dir/src/PBVS.cpp.i
+.PHONY : src/PBVS.cpp.i
+
+src/PBVS.s: src/PBVS.cpp.s
+
+.PHONY : src/PBVS.s
+
+# target to generate assembly for a file
+src/PBVS.cpp.s:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PBVS.dir/build.make ur5_rbtq/CMakeFiles/PBVS.dir/src/PBVS.cpp.s
+.PHONY : src/PBVS.cpp.s
+
+src/ibvs.o: src/ibvs.cpp.o
+
+.PHONY : src/ibvs.o
+
+# target to build an object file
+src/ibvs.cpp.o:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/ibvs.dir/build.make ur5_rbtq/CMakeFiles/ibvs.dir/src/ibvs.cpp.o
+.PHONY : src/ibvs.cpp.o
+
+src/ibvs.i: src/ibvs.cpp.i
+
+.PHONY : src/ibvs.i
+
+# target to preprocess a source file
+src/ibvs.cpp.i:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/ibvs.dir/build.make ur5_rbtq/CMakeFiles/ibvs.dir/src/ibvs.cpp.i
+.PHONY : src/ibvs.cpp.i
+
+src/ibvs.s: src/ibvs.cpp.s
+
+.PHONY : src/ibvs.s
+
+# target to generate assembly for a file
+src/ibvs.cpp.s:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/ibvs.dir/build.make ur5_rbtq/CMakeFiles/ibvs.dir/src/ibvs.cpp.s
+.PHONY : src/ibvs.cpp.s
+
+src/vispComponent.o: src/vispComponent.cpp.o
+
+.PHONY : src/vispComponent.o
+
+# target to build an object file
+src/vispComponent.cpp.o:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/vispComponent.dir/build.make ur5_rbtq/CMakeFiles/vispComponent.dir/src/vispComponent.cpp.o
+.PHONY : src/vispComponent.cpp.o
+
+src/vispComponent.i: src/vispComponent.cpp.i
+
+.PHONY : src/vispComponent.i
+
+# target to preprocess a source file
+src/vispComponent.cpp.i:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/vispComponent.dir/build.make ur5_rbtq/CMakeFiles/vispComponent.dir/src/vispComponent.cpp.i
+.PHONY : src/vispComponent.cpp.i
+
+src/vispComponent.s: src/vispComponent.cpp.s
+
+.PHONY : src/vispComponent.s
+
+# target to generate assembly for a file
+src/vispComponent.cpp.s:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/vispComponent.dir/build.make ur5_rbtq/CMakeFiles/vispComponent.dir/src/vispComponent.cpp.s
+.PHONY : src/vispComponent.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -231,17 +342,28 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... PBVS"
+	@echo "... vispComponent"
+	@echo "... install/local"
+	@echo "... ibvs"
 	@echo "... CppWebCamPubSub"
-	@echo "... _catkin_empty_exported_target"
 	@echo "... src/CppWebCamPubSub.o"
 	@echo "... src/CppWebCamPubSub.i"
 	@echo "... src/CppWebCamPubSub.s"
+	@echo "... src/PBVS.o"
+	@echo "... src/PBVS.i"
+	@echo "... src/PBVS.s"
+	@echo "... src/ibvs.o"
+	@echo "... src/ibvs.i"
+	@echo "... src/ibvs.s"
+	@echo "... src/vispComponent.o"
+	@echo "... src/vispComponent.i"
+	@echo "... src/vispComponent.s"
 .PHONY : help
 
 

@@ -185,7 +185,7 @@ foreach(t ${ur5_rbtq_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "rospy")
+set(depends "rospy;roscpp;cv_bridge;sensor_msgs;std_msgs;image_transport;visp_ros;visp_bridge")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

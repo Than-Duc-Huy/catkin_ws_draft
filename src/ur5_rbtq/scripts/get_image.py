@@ -17,7 +17,6 @@ def callback(msg):
         print(e)
     cv.imshow("frame",cv_image)
     cv.waitKey(1)
-    pass
 
 def main():
     rospy.init_node("image_process")

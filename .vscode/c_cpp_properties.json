@@ -1,25 +1,26 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "${default}",
-        "limitSymbolsToIncludedHeaders": false
-      },
-      "includePath": [
-        "/home/huy/catkin_ws/devel/include/**",
-        "/opt/ros/noetic/include/**",
-        "/home/huy/catkin_ws/src/Universal_Robots_ROS_Driver/controller_stopper/include/**",
-        "/home/huy/catkin_ws/src/Universal_Robots_ROS_Driver/ur_calibration/include/**",
-        "/home/huy/catkin_ws/src/universal_robot/ur_kinematics/include/**",
-        "/home/huy/catkin_ws/src/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS",
-      "intelliSenseMode": "gcc-x64",
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "gnu11",
-      "cppStandard": "c++14"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/huy/catkin_ws/devel/include/**",
+                "/opt/ros/noetic/include/**",
+                "/home/huy/catkin_ws/src/Universal_Robots_ROS_Driver/controller_stopper/include/**",
+                "/home/huy/catkin_ws/src/Universal_Robots_ROS_Driver/ur_calibration/include/**",
+                "/home/huy/catkin_ws/src/universal_robot/ur_kinematics/include/**",
+                "/home/huy/catkin_ws/src/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
+                "/usr/include/**",
+                "/home/huy/catkin_ws/src/visp_ros/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14"
+        }
+    ],
+    "version": 4
 }

@@ -7,11 +7,22 @@ project(ur5_rbtq)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+find_package(OpenCV REQUIRED)
+find_package(VISP REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  roscpp
+  sensor_msgs
+  cv_bridge
+  roscpp
+  std_msgs
+  image_transport
+  visp_ros
+  visp_bridge
 )
 
-find_package(OpenCV REQUIRED)
+
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -105,8 +116,8 @@ find_package(OpenCV REQUIRED)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ur5_rbtq
-  CATKIN_DEPENDS rospy
-  DEPENDS opencv2
+  CATKIN_DEPENDS rospy roscpp cv_bridge sensor_msgs std_msgs image_transport visp_ros visp_bridge
+  DEPENDS opencv2 visp3
 )
 
 ###########
@@ -119,6 +130,7 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
+  ${VISP_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -137,8 +149,16 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/ur5_rbtq_node.cpp)
 
 add_executable(CppWebCamPubSub src/CppWebCamPubSub.cpp)
-target_link_libraries(CppWebCamPubSub ${OpenCV_LIBS})
+target_link_libraries(CppWebCamPubSub ${OpenCV_LIBS} ${catkin_LIBRARIES})
 
+add_executable(ibvs src/ibvs.cpp)
+target_link_libraries(ibvs ${VISP_LIBRARIES})
+
+add_executable(vispComponent src/vispComponent.cpp)
+target_link_libraries(vispComponent ${catkin_LIBRARIES} ${VISP_LIBRARIES})
+
+add_executable(PBVS src/PBVS.cpp)
+target_link_libraries(PBVS ${catkin_LIBRARIES} ${VISP_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
