@@ -140,4 +140,5 @@
 /home/huy/catkin_ws/build/ur5_rbtq/CMakeFiles/vispComponent.dir
 /home/huy/catkin_ws/build/ur5_rbtq/CMakeFiles/install/local.dir
 /home/huy/catkin_ws/build/ur5_rbtq/CMakeFiles/ibvs.dir
+/home/huy/catkin_ws/build/ur5_rbtq/CMakeFiles/PCLTest.dir
 /home/huy/catkin_ws/build/ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir

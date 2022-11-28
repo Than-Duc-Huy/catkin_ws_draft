@@ -9,6 +9,7 @@ project(ur5_rbtq)
 ## is used, also find other catkin packages
 find_package(OpenCV REQUIRED)
 find_package(VISP REQUIRED)
+find_package(PCL REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   roscpp
@@ -127,10 +128,10 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
   ${VISP_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -159,6 +160,9 @@ target_link_libraries(vispComponent ${catkin_LIBRARIES} ${VISP_LIBRARIES})
 
 add_executable(PBVS src/PBVS.cpp)
 target_link_libraries(PBVS ${catkin_LIBRARIES} ${VISP_LIBRARIES})
+
+add_executable(PCLTest src/PCLTest.cpp)
+target_link_libraries(PCLTest ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

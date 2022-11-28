@@ -213,6 +213,21 @@ ibvs/fast:
 .PHONY : ibvs/fast
 
 # Convenience name for target.
+ur5_rbtq/CMakeFiles/PCLTest.dir/rule:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/PCLTest.dir/rule
+.PHONY : ur5_rbtq/CMakeFiles/PCLTest.dir/rule
+
+# Convenience name for target.
+PCLTest: ur5_rbtq/CMakeFiles/PCLTest.dir/rule
+
+.PHONY : PCLTest
+
+# fast build rule for target.
+PCLTest/fast:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PCLTest.dir/build.make ur5_rbtq/CMakeFiles/PCLTest.dir/build
+.PHONY : PCLTest/fast
+
+# Convenience name for target.
 ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
 .PHONY : ur5_rbtq/CMakeFiles/CppWebCamPubSub.dir/rule
@@ -280,6 +295,33 @@ src/PBVS.s: src/PBVS.cpp.s
 src/PBVS.cpp.s:
 	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PBVS.dir/build.make ur5_rbtq/CMakeFiles/PBVS.dir/src/PBVS.cpp.s
 .PHONY : src/PBVS.cpp.s
+
+src/PCLTest.o: src/PCLTest.cpp.o
+
+.PHONY : src/PCLTest.o
+
+# target to build an object file
+src/PCLTest.cpp.o:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PCLTest.dir/build.make ur5_rbtq/CMakeFiles/PCLTest.dir/src/PCLTest.cpp.o
+.PHONY : src/PCLTest.cpp.o
+
+src/PCLTest.i: src/PCLTest.cpp.i
+
+.PHONY : src/PCLTest.i
+
+# target to preprocess a source file
+src/PCLTest.cpp.i:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PCLTest.dir/build.make ur5_rbtq/CMakeFiles/PCLTest.dir/src/PCLTest.cpp.i
+.PHONY : src/PCLTest.cpp.i
+
+src/PCLTest.s: src/PCLTest.cpp.s
+
+.PHONY : src/PCLTest.s
+
+# target to generate assembly for a file
+src/PCLTest.cpp.s:
+	cd /home/huy/catkin_ws/build && $(MAKE) -f ur5_rbtq/CMakeFiles/PCLTest.dir/build.make ur5_rbtq/CMakeFiles/PCLTest.dir/src/PCLTest.cpp.s
+.PHONY : src/PCLTest.cpp.s
 
 src/ibvs.o: src/ibvs.cpp.o
 
@@ -351,6 +393,7 @@ help:
 	@echo "... vispComponent"
 	@echo "... install/local"
 	@echo "... ibvs"
+	@echo "... PCLTest"
 	@echo "... CppWebCamPubSub"
 	@echo "... src/CppWebCamPubSub.o"
 	@echo "... src/CppWebCamPubSub.i"
@@ -358,6 +401,9 @@ help:
 	@echo "... src/PBVS.o"
 	@echo "... src/PBVS.i"
 	@echo "... src/PBVS.s"
+	@echo "... src/PCLTest.o"
+	@echo "... src/PCLTest.i"
+	@echo "... src/PCLTest.s"
 	@echo "... src/ibvs.o"
 	@echo "... src/ibvs.i"
 	@echo "... src/ibvs.s"

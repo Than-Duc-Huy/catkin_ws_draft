@@ -1468,6 +1468,19 @@ ibvs/fast:
 .PHONY : ibvs/fast
 
 #=============================================================================
+# Target rules for targets named PCLTest
+
+# Build rule for target.
+PCLTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PCLTest
+.PHONY : PCLTest
+
+# fast build rule for target.
+PCLTest/fast:
+	$(MAKE) -f ur5_rbtq/CMakeFiles/PCLTest.dir/build.make ur5_rbtq/CMakeFiles/PCLTest.dir/build
+.PHONY : PCLTest/fast
+
+#=============================================================================
 # Target rules for targets named CppWebCamPubSub
 
 # Build rule for target.
@@ -1593,6 +1606,7 @@ help:
 	@echo "... PBVS"
 	@echo "... vispComponent"
 	@echo "... ibvs"
+	@echo "... PCLTest"
 	@echo "... CppWebCamPubSub"
 .PHONY : help
 

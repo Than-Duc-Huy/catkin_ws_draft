@@ -17,6 +17,8 @@ class UR5Control:
         self.robot = moveit_commander.RobotCommander()
         self.group_name = "manipulator"
         self.move_group = moveit_commander.MoveGroupCommander(self.group_name)
+        self.move_group.set_goal_position_tolerance(0.005)
+        self.move_group.set_goal_orientation_tolerance(0.005)
 
         self.display_trajectory_publisher = rospy.Publisher(
             "/move_group/display_planned_path",
@@ -27,19 +29,21 @@ class UR5Control:
     def getCurrentState(self):
         self.state = self.robot.get_current_state()
     def goToPose(self, pose):
-        # pose_goal = Pose()
-        # pose_goal = pose
-        # pose_goal.position.x = list[0]
-        # pose_goal.position.y = list[1]
-        # pose_goal.position.z = list[2]
-
-        # pose_goal.orientation.x = list[3]
-        # pose_goal.orientation.y = list[4]
-        # pose_goal.orientation.z = list[5]
-        # pose_goal.orientation.w = list[6]
-
         self.move_group.set_pose_target(pose)
         self.move_group.go(wait=True)
+        self.move_group.stop()
+        self.move_group.clear_pose_targets()
+
+    def goToPoseDisplay(self, pose):
+        self.move_group.set_pose_target(pose)
+        # self.move_group.go(wait=True)
+        display_trajectory = moveit_msgs.msg.DisplayTrajectory()
+        display_trajectory.trajectory_start = self.robot.get_current_state()
+        waypoint = []
+        waypoint.append(pose)
+        (plan,fraction) = self.move_group.compute_cartesian_path(waypoint,0.01,0)
+        display_trajectory.trajectory.append(plan) # Add the sequence of pose
+        self.display_trajectory_publisher.publish(display_trajectory)
         self.move_group.stop()
         self.move_group.clear_pose_targets()
 

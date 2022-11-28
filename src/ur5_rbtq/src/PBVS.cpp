@@ -21,15 +21,13 @@ int main(int argc, char **argv)
 {
     vpImage<unsigned char> I; // Gray image container
 
+    const std::string IMAGE_TOPC = "/camera/color/image_raw";
+    // const std::string IMAGE_TOPC = "/webcam/image_rect";
+
     vpROSGrabber g;
-    g.setImageTopic("/camera/color/image_raw");
+    g.setImageTopic(IMAGE_TOPC);
     g.open(I);
 
-    // Send Node
-    static const std::string POSE_TOPIC = "/desired_pose";
-    // ros::init(argc, argv, "visp_component");
-    // ros::NodeHandle n;
-    // ros::Publisher pub = n.advertise<geometry_msgs::Pose>(POSE_TOPIC, 10);
     vpDisplayX d(I);
 
     //============= April Tag
@@ -46,10 +44,10 @@ int main(int argc, char **argv)
     //  Servo
     vpHomogeneousMatrix cdMc, cMo;
 
-    double opt_tagSize = 0.08;
+    double opt_tagSize = 0.061;
 
     // Desired pose
-    vpHomogeneousMatrix cdMo(vpTranslationVector(0.05, 0.05, opt_tagSize *3 ), vpRotationMatrix({1, 0, 0, 0, -1, 0, 0, 0, -1}));
+    vpHomogeneousMatrix cdMo(vpTranslationVector(0.05, 0.05, opt_tagSize*4), vpRotationMatrix({1, 0, 0, 0, -1, 0, 0, 0, -1}));
 
     cdMc = cdMo * cMo.inverse();
 
@@ -84,15 +82,13 @@ int main(int argc, char **argv)
     vpColVector v_c(6);
 
 
-
-
-
     //ROS Component
-    const std::string TOPIC = "/pose_change";
+    const std::string POSE_CHANGE_TOPIC = "/pose_change";
+    const std::string OBJECT_POSE_TOPIC = "/object_pose";
     ros::init(argc, argv,"pbvs_visp");
     ros::NodeHandle n;
-    ros::Publisher pub = n.advertise<geometry_msgs::Pose>(TOPIC,1000);
-
+    ros::Publisher pub_pose_change = n.advertise<geometry_msgs::Pose>(POSE_CHANGE_TOPIC,100);
+    ros::Publisher pub_object_pose = n.advertise<geometry_msgs::Pose>(OBJECT_POSE_TOPIC,100);
 
 
 
@@ -116,13 +112,17 @@ int main(int argc, char **argv)
             std::vector<vpImagePoint> vip = detector.getPolygon(0);
 
 
+            geometry_msgs::Pose object_pose = visp_bridge::toGeometryMsgsPose(cMo);
+            pub_object_pose.publish(object_pose);
+
+
             cdMc = cdMo * cMo.inverse();
             t.buildFrom(cdMc);
             tu.buildFrom(cdMc);
 
 
             v_c = task.computeControlLaw(); // Camera velocity
-
+            v_c = (v_c);
             // Print out the velocity to console
             for (double i : v_c.toStdVector())
             {
@@ -139,10 +139,11 @@ int main(int argc, char **argv)
 
         vpHomogeneousMatrix a;
         a.buildFrom(v_c[0], v_c[1],v_c[2],v_c[3],v_c[4],v_c[5]);
+        // a.buildFrom(v_c[0], v_c[1],v_c[2],0,0,0);
         a.print();
         std::cout << std::endl;
         geometry_msgs::Pose desired_pose = visp_bridge::toGeometryMsgsPose(a);
-        pub.publish(desired_pose);
+        pub_pose_change.publish(desired_pose);
 
         vpDisplay::flush(I);
     }
