@@ -1,0 +1,13 @@
+rostopic pub /basic_grasping_perception/find_objects/goal grasping_msgs/FindGraspableObjectsActionGoal "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: 'base_link'
+goal_id:
+  stamp:
+    secs: 0
+    nsecs: 0
+  id: ''
+goal:
+  plan_grasps: false"
