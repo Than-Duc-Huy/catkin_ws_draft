@@ -65,8 +65,7 @@ void cloud_callback(const sensor_msgs::PointCloud2ConstPtr &cloud_msg)
     pcl_conversion::toPCL(*cloud_msg, *cloud); // from left to right
 
     sensor_msgs::PointCloud2 output;
-pcl_conversion:
-    fromPCL(cloud_filtered, output);
+    pcl_conversion::fromPCL(cloud_filtered, output);
 
     pub.publish(output);
 }
